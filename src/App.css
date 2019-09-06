@@ -7,6 +7,11 @@
   height: 40vmin;
   pointer-events: none;
 }
+.App-logo-stl {
+  height: 40vmin;
+  pointer-events: none;
+  border-radius: 10px;
+}
 
 .App-header {
   background-color: #282c34;
