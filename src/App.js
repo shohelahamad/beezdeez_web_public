@@ -1,19 +1,41 @@
-import React from 'react';
-import logo from './logo.png';
-import './App.css';
-import Navbar from './components/navbar';
-function App() {
-  return (
-    <div className="App">
-      <Navbar></Navbar>
-      <header className="App-header">
-        <img src={logo} className="App-logo-stl" alt="logo" />
-        <h3>
-          We are coming soon to make your daily routine smarter########
-        </h3>
-      </header>
-    </div>
-  );
-}
+import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import Blog from './containers/Blog/Blog';
+import reducer from './containers/store/reducers/reducer';
+import thunk from 'redux-thunk';
 
+
+const rootReducer = combineReducers({
+    authinfo: reducer,
+    res: ""
+});
+
+const logger = store => {
+    return next => {
+        return action => {
+            console.log('[Middleware] Dispatching', action);
+            const result = next(action);
+            console.log('[Middleware] next state', store.getState());
+            return result;
+        }
+    }
+};
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
+
+class App extends Component {
+  render () {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>
+            <Blog />
+        </BrowserRouter>
+      </Provider>
+    );
+  }
+}
 export default App;
