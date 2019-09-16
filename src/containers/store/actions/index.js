@@ -1,1 +1,1 @@
-export { tryAuth } from "./auth";
+export { tryAuth, logout } from "./auth";

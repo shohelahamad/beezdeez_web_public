@@ -10,16 +10,16 @@ class Navbar extends Component {
                     <nav>
                         <ul>
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
+                            { this.props.isAuth ? <li><Link to="/profile">Profile</Link></li> : null}
+                            { !this.props.isAuth ?  <li><Link to={{
                                 pathname: '/register',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
-                            }}>Register</Link></li>
-                            <li><Link to={{
-                                pathname: '/login',
+                            }}>Login/Register</Link></li> : <li><Link to={{
+                                pathname: '/logout',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
-                            }}>Login</Link></li>
+                            }}>Logout</Link></li>}
                         </ul>
                     </nav>
                 </header>

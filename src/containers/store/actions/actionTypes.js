@@ -12,12 +12,6 @@ export const FETCH_ORDERS_START = 'FETCH_ORDERS_START';
 export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS';
 export const FETCH_ORDERS_FAIL = 'FETCH_ORDERS_FAIL';
 
-
-export const AUTH_START = 'AUTH_START';
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const AUTH_FAIL = 'AUTH_FAIL';
-
-
 export const TRY_AUTH = "TRY_AUTH";
 
 export const UI_START_LOADING = "UI_START_LOADING";
@@ -25,3 +19,8 @@ export const UI_STOP_LOADING = "UI_STOP_LOADING";
 
 export const AUTH_SET_TOKEN = "AUTH_SET_TOKEN";
 export const AUTH_REMOVE_TOKEN = "AUTH_REMOVE_TOKEN";
+
+export const AUTH_START = 'AUTH_START';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';

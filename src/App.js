@@ -3,12 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import Blog from './containers/Blog/Blog';
-import reducer from './containers/store/reducers/reducer';
+import authReducer from './containers/store/reducers/auth';
 import thunk from 'redux-thunk';
 
 
 const rootReducer = combineReducers({
-    authinfo: reducer,
+    authinfo: authReducer,
     res: ""
 });
 
