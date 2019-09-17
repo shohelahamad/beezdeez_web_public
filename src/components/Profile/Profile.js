@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
+import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
-
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 class Profile extends Component {
     render () {
         return (
             <div className="Blog">
-              <p>The Profile page loaded</p>
+              <ProfileInfo profile_email={this.props.userEmail}></ProfileInfo>
             </div>
         );
     }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+    return {
+        userEmail: state.authinfo.emailId
+    };
+};
+
+export default connect( mapStateToProps, null )( Profile );

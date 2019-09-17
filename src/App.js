@@ -4,12 +4,13 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import Root from './components/Root/Root';
 import authReducer from './store/reducers/auth';
+import profileReducer from './store/reducers/profile';
 import thunk from 'redux-thunk';
 
 
 const rootReducer = combineReducers({
     authinfo: authReducer,
-    res: ""
+    profile: profileReducer
 });
 
 const logger = store => {
