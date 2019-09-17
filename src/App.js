@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import Blog from './containers/Blog/Blog';
-import authReducer from './containers/store/reducers/auth';
+import Root from './components/Root/Root';
+import authReducer from './store/reducers/auth';
 import thunk from 'redux-thunk';
 
 
@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-            <Blog />
+            <Root />
         </BrowserRouter>
       </Provider>
     );
