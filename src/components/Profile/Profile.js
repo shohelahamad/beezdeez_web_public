@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
-import ProfileInfo from './ProfileInfo/ProfileInfo'
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+import * as actions from '../../store/actions/index';
+
 class Profile extends Component {
+  componentDidMount(){
+    this.props.onLoadProfile(this.props.token);
+  }
     render () {
         return (
             <div className="Blog">
-              <ProfileInfo profile_email={this.props.userEmail}></ProfileInfo>
+              <ProfileInfo
+                profile_email={this.props.userEmail}
+                firstName={this.props.firstName}
+                lastName={this.props.lastName}
+                designation={this.props.designation}
+              />
             </div>
         );
     }
@@ -15,8 +25,17 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
     return {
-        userEmail: state.authinfo.emailId
+        token: state.authinfo.token,
+        userEmail: state.authinfo.emailId,
+        firstName: state.profile.firstName,
+        lastName: state.profile.lastName,
+        designation: state.profile.designation,
     };
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadProfile: (token) => dispatch(actions.getprofile(token))
+  };
+};
 
-export default connect( mapStateToProps, null )( Profile );
+export default connect( mapStateToProps, mapDispatchToProps )( Profile );

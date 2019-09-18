@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 import { Route, Link } from 'react-router-dom';
 
-class Home extends Component {
+class EventAndMeeting extends Component {
     render () {
         return (
             <div className="Blog">
-              <h2>welcome to ALPHAJUMP intranet service</h2>
-              <h3>Please login to the service</h3>
+              <h1>welcome to ALPHAJUMP Event And Meeting Section</h1>
             </div>
         );
     }
 }
 
-export default Home;
+export default EventAndMeeting;

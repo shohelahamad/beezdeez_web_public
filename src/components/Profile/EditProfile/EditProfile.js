@@ -99,8 +99,11 @@ class EditProfile extends Component {
         event.preventDefault();
         this.props.onSaveProfile( this.state.controls.firstName.value, this.state.controls.lastName.value, this.state.controls.designation.value, this.props.token );
         console.log( this.state.controls.firstName.value, this.state.controls.lastName.value, this.state.controls.designation.value, this.props.token );
+        this.renderRedirect();
     }
-
+    renderRedirect = () => {
+      this.props.history.push("/profile");
+    }
     switchAuthModeHandler = () => {
         this.setState(prevState => {
             return {isSignup: !prevState.isSignup};

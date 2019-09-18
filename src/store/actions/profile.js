@@ -2,8 +2,8 @@ import {EDIT_PROFILE, SET_PROFILE} from './actionTypes';
 export const editprofile = (firstName,lastName,designation,token) =>{
 
     return dispatch => {
-        fetch("https://beezdeez-791a4.firebaseio.com/profile.json?auth=", {
-            method: 'POST',
+        fetch("https://beezdeez-791a4.firebaseio.com/profile.json?auth="+ token, {
+            method: 'PUT',
             body: JSON.stringify({
             firstName: firstName,
             lastName: lastName,

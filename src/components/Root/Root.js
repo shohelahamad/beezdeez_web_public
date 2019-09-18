@@ -6,6 +6,7 @@ import Register from '../Register/Register';
 import Home from '../Home/Home';
 import Profile from '../Profile/Profile';
 import WorkSchedule from '../WorkSchedule/WorkSchedule';
+import EventAndMeeting from '../EventAndMeeting/EventAndMeeting';
 import InputWorkSchedule from '../WorkSchedule/InputWorkSchedule';
 import EditProfile from '../Profile/EditProfile/EditProfile';
 import Logout from '../Register/Logout/Logout';
@@ -44,6 +45,7 @@ class Root extends Component {
                 <Route path="/editprofile" component={EditProfile} />
                 <Route path="/schedules" component={WorkSchedule} />
                 <Route path="/addschedule" component={InputWorkSchedule} />
+                <Route path="/events" component={EventAndMeeting} />
             </div>
         );
     }
