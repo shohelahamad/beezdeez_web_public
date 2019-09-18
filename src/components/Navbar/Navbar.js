@@ -13,6 +13,7 @@ class Navbar extends Component {
                             { !this.props.isAuth ? <li><Link to="/">About</Link></li> : null}
                             { this.props.isAuth ? <li><Link to="/profile">Profile</Link></li> : null}
                             { this.props.isAuth ? <li><Link to="/schedules">Work Schedule</Link></li> : null}
+                            { this.props.isAuth ? <li><Link to="/events">Events & Meeting </Link></li> : null}
                             { !this.props.isAuth ?  <li><Link to={{
                                 pathname: '/register',
                                 hash: '#submit',

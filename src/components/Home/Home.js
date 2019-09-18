@@ -6,7 +6,7 @@ class Home extends Component {
     render () {
         return (
             <div className="Blog">
-              <p>The Home page loaded</p>
+              <p>welcome to ALPHAJUMP intranet service</p>
             </div>
         );
     }

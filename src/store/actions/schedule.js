@@ -1,5 +1,5 @@
 import {ADD_SCHEDULE,SET_SCHEDULES, DELETE_SCHEDULE, UPDATE_SCHEDULE} from './actionTypes';
-// import { uiStartLoading, uiStopLoading } from './index';
+import axios from 'axios';
 export const addSchedule = (workingDate,startTime,endTime,note,token) =>{
 
     return dispatch => {
@@ -52,16 +52,61 @@ export const setSchedules = schedules => {
         schedules: schedules
     };
 };
-export const updateSchedule = (key,newDueDate) =>{
+// export const updateSchedule = (key,workingDate,startTime,endTime,note) =>{
+//   return dispatch => {
+//       fetch("https://beezdeez-791a4.firebaseio.com/schedules"+key"/.json")
+//       .catch(err => {
+//           alert("Something went wrong, sorry :/");
+//           console.log(err);
+//       })
+//       .then(res => res.json())
+//       .then(parsedRes => {
+//           const schedules = [];
+//           for (let key in parsedRes) {
+//               schedules.push({
+//                   ...parsedRes[key],
+//                   key: key
+//               });
+//           }
+//           dispatch(setSchedules(schedules));
+//       });
+//   };
+//
+// };
+export const updateSchedule = (key,workingDate,startTime,endTime,note) =>{
     return {
         type: UPDATE_SCHEDULE,
-        todoKey: key,
-        newDueDate: newDueDate
+        scheduleKey: key,
+        workingDate: workingDate,
+        startTime: startTime,
+        endTime: endTime,
+        note: note,
     };
+
 };
+// export const updateAllSchedule = () => {
+//     return dispatch => {
+//         axios.put("https://beezdeez-791a4.firebaseio.com/schedules/.json", )
+//         .catch(err => {
+//             alert("Something went wrong, sorry :/");
+//             console.log(err);
+//         })
+//         .then(res => res.json())
+//         .then(parsedRes => {
+//             const schedules = [];
+//             for (let key in parsedRes) {
+//                 schedules.push({
+//                     ...parsedRes[key],
+//                     key: key
+//                 });
+//             }
+//             dispatch(setSchedules(schedules));
+//         });
+//     };
+// };
 export const deleteSchedule = (key) =>{
     return{
         type: DELETE_SCHEDULE,
-        placeKey: key
+        scheduleKey: key
     };
 };

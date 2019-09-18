@@ -5,12 +5,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import Root from './components/Root/Root';
 import authReducer from './store/reducers/auth';
 import profileReducer from './store/reducers/profile';
+import scheduleReducer from './store/reducers/schedule';
 import thunk from 'redux-thunk';
 
 
 const rootReducer = combineReducers({
     authinfo: authReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    schedules: scheduleReducer
 });
 
 const logger = store => {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import WorkScheduleList from './WorkScheduleList/WorkScheduleList';
-import * as actions from "../../store/actions/actionTypes";
+import * as actions from "../../store/actions/index";
 import Button from '../../components/UI/Button/Button';
 import { Route, Link } from 'react-router-dom';
 // import { getTodos } from "../../store/actions/index";
@@ -9,48 +9,54 @@ import { Route, Link } from 'react-router-dom';
 // import { getEvents } from "../../store/actions/index";
 
 class TimeTable extends Component {
-  // componentDidMount(){
-  //   this.props.onLoadTodos();
-  //   this.props.onLoadLabels();
-  //   this.props.onLoadEvents();
-  // }
-  doneSelectedHandler = key => {
-    const selTodo = this.props.todos.find(todo => {
-      return todo.key === key;
-    });
-    this.props.onDdoneTodo(selTodo.key);
+  componentDidMount(){
+    this.props.onLoadSchedule();
   }
+  // doneSelectedHandler = key => {
+  //   const selSchedule = this.props.schedules.find(schedule => {
+  //     return schedule.key === key;
+  //   });
+  //   this.props.onDdoneTodo(selSchedule.key);
+  // }
   itemSelectedHandler = key => {
-    const selTodo = this.props.todos.find(todo => {
-      return todo.key === key;
+    const selSchedule = this.props.schedules.find(schedule => {
+      return schedule.key === key;
     });
+    // console.log(key);
+  };
+  onScheduleEditHandler = (key,workingDate,startTime,endTime,note) => {
+    this.props.onEditSchedule(key,workingDate,startTime,endTime,note);
+    console.log(key,workingDate,startTime,endTime,note);
   };
 
   render() {
     return (
       <div>
-        <WorkScheduleList/>
+        <Button><Link to="/addschedule">Add New Schedule</Link></Button>
+        <WorkScheduleList
+          schedules={this.props.schedules}
+          onItemSelected={this.itemSelectedHandler}
+          onScheduleEdit={this.onScheduleEditHandler}
+        />
         {/* <TimeTableList
-          todos={this.props.todos}
+          todos={this.props.schedules}
           onItemSelected={this.itemSelectedHandler}
           onDoneSelected={this.doneSelectedHandler}
         /> */}
-        <Button><Link to="/addschedule">Add New Schedule</Link></Button>
+
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    timetables: state.authinfo.token
+    schedules: state.schedules.schedules
   };
 };
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     // onDdoneTodo: key => dispatch(doneTodo(key)),
-//     // onLoadTodos: () => dispatch(getTodos()),
-//     // onLoadLabels: () => dispatch(getLabels()),
-//     // onLoadEvents: () => dispatch(getEvents())
-//   };
-// };
-export default connect(mapStateToProps,null)(TimeTable);
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadSchedule: () => dispatch(actions.getSchedules()),
+    onEditSchedule: (key,workingDate,startTime,endTime,note) => dispatch(actions.updateSchedule(key,workingDate,startTime,endTime,note)),
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps)(TimeTable);

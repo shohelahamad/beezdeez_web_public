@@ -30,7 +30,6 @@ dateChangeHandle = (event) => {
 
 handleSubmit = (event) => {
   this.props.onScheduleAdded(this.state.workingDate,this.state.startTime,this.state.endTime,this.state.note);
-  alert('a time was started: ' + this.state.workingDate + this.state.startTime +"End Time"+ this.state.endTime);
   event.preventDefault();
 }
 
