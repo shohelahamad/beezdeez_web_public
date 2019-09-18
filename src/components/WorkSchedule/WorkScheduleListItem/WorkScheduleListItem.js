@@ -12,8 +12,8 @@ export default class WorkScheduleListItem extends Component {
     this.deleteSchedule = this.deleteSchedule.bind(this);
   }
   deleteSchedule(){
-    const {id} = this.props.Schedule;
-    this.props.deleteSchedule(id);
+    const key = this.props.itemKey;
+    this.props.onDeleteSchedule(key);
   }
   editSchedule(){
     this.setState((prevState,props) => ({

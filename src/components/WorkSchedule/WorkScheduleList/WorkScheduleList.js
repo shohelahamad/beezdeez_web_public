@@ -16,6 +16,7 @@ const WorkScheduleList = props => {
               endTime={item.todoTitle}
               note={item.todoDescribtion}
               onEditSchedule={props.onScheduleEdit}
+              onDeleteSchedule={props.onScheduleDelete}
               {...item}
             />
           )}

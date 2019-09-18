@@ -12,21 +12,20 @@ class TimeTable extends Component {
   componentDidMount(){
     this.props.onLoadSchedule();
   }
-  // doneSelectedHandler = key => {
+  // itemSelectedHandler = key => {
   //   const selSchedule = this.props.schedules.find(schedule => {
   //     return schedule.key === key;
   //   });
-  //   this.props.onDdoneTodo(selSchedule.key);
-  // }
-  itemSelectedHandler = key => {
-    const selSchedule = this.props.schedules.find(schedule => {
-      return schedule.key === key;
-    });
-    // console.log(key);
-  };
+  //   // console.log(key);
+  // };
   onScheduleEditHandler = (key,workingDate,startTime,endTime,note) => {
     this.props.onEditSchedule(key,workingDate,startTime,endTime,note);
     console.log(key,workingDate,startTime,endTime,note);
+  };
+  onScheduleDeleteHandler = (key) => {
+    this.props.onDeleteSchedule(key);
+    // this.props.onEditSchedule(key);
+    console.log(key);
   };
 
   render() {
@@ -37,6 +36,7 @@ class TimeTable extends Component {
           schedules={this.props.schedules}
           onItemSelected={this.itemSelectedHandler}
           onScheduleEdit={this.onScheduleEditHandler}
+          onScheduleDelete={this.onScheduleDeleteHandler}
         />
         {/* <TimeTableList
           todos={this.props.schedules}
@@ -57,6 +57,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onLoadSchedule: () => dispatch(actions.getSchedules()),
     onEditSchedule: (key,workingDate,startTime,endTime,note) => dispatch(actions.updateSchedule(key,workingDate,startTime,endTime,note)),
+    onDeleteSchedule: (key) => dispatch(actions.deleteSchedule(key)),
   };
 };
 export default connect(mapStateToProps,mapDispatchToProps)(TimeTable);

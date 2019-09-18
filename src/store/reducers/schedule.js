@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) =>{
         return {
             ...state,
             schedules: state.schedules.filter(schedule => {
-            return schedule.key !== state.selectedSchedule.key;
+            return schedule.key !== action.scheduleKey;
             }),
             selectedSchedule: null
         };

@@ -88,8 +88,25 @@ export const updateSchedule = (key,workingDate,startTime,endTime,note) =>{
 
 };
 export const deleteSchedule = (key) =>{
-    return{
-        type: DELETE_SCHEDULE,
-        scheduleKey: key
-    };
+  return dispatch => {
+      // dispatch(uiStartLoading());
+      fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+key+".json", {
+          method: 'DELETE'
+          })
+          .catch(err => {
+              console.log(err);
+              alert("Something went wrong, please try again!");
+              // dispatch(uiStopLoading());
+          })
+          .then(res => res.json())
+          .then(parsedRes => {
+              console.log(parsedRes);
+              dispatch(getSchedules());
+              // dispatch(uiStopLoading());
+          });
+      };
+    // return{
+    //     type: DELETE_SCHEDULE,
+    //     scheduleKey: key
+    // };
 };
