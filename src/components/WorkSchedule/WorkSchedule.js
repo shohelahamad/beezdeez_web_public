@@ -10,7 +10,7 @@ import { Route, Link } from 'react-router-dom';
 
 class TimeTable extends Component {
   componentDidMount(){
-    this.props.onLoadSchedule();
+    this.props.onLoadSchedule(this.props.userId,this.props.token);
   }
   // itemSelectedHandler = key => {
   //   const selSchedule = this.props.schedules.find(schedule => {
@@ -19,11 +19,11 @@ class TimeTable extends Component {
   //   // console.log(key);
   // };
   onScheduleEditHandler = (key,workingDate,startTime,endTime,note) => {
-    this.props.onEditSchedule(key,workingDate,startTime,endTime,note);
+    this.props.onEditSchedule(key,workingDate,startTime,endTime,note,this.props.userId,this.props.token);
     console.log(key,workingDate,startTime,endTime,note);
   };
   onScheduleDeleteHandler = (key) => {
-    this.props.onDeleteSchedule(key);
+    this.props.onDeleteSchedule(key,this.props.userId,this.props.token);
     // this.props.onEditSchedule(key);
     console.log(key);
   };
@@ -50,14 +50,16 @@ class TimeTable extends Component {
 }
 const mapStateToProps = state => {
   return {
-    schedules: state.schedules.schedules
+    schedules: state.schedules.schedules,
+    token: state.authinfo.token,
+    userId: state.authinfo.userId
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onLoadSchedule: () => dispatch(actions.getSchedules()),
-    onEditSchedule: (key,workingDate,startTime,endTime,note) => dispatch(actions.updateSchedule(key,workingDate,startTime,endTime,note)),
-    onDeleteSchedule: (key) => dispatch(actions.deleteSchedule(key)),
+    onLoadSchedule: (userId,token) => dispatch(actions.getSchedules(userId,token)),
+    onEditSchedule: (key,workingDate,startTime,endTime,note,userId,token) => dispatch(actions.updateSchedule(key,workingDate,startTime,endTime,note,userId,token)),
+    onDeleteSchedule: (key,userId,token) => dispatch(actions.deleteSchedule(key,userId,token)),
   };
 };
 export default connect(mapStateToProps,mapDispatchToProps)(TimeTable);

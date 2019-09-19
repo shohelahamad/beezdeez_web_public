@@ -1,10 +1,10 @@
 import {ADD_SCHEDULE,SET_SCHEDULES, DELETE_SCHEDULE, UPDATE_SCHEDULE} from './actionTypes';
 import axios from 'axios';
-export const addSchedule = (workingDate,startTime,endTime,note,token) =>{
+export const addSchedule = (workingDate,startTime,endTime,note,userId,token) =>{
 
     return dispatch => {
         // dispatch(uiStartLoading());
-        fetch("https://beezdeez-791a4.firebaseio.com/schedules.json", {
+        fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+".json?auth="+ token, {
             method: 'POST',
             body: JSON.stringify({
             workingDate: workingDate,
@@ -21,14 +21,14 @@ export const addSchedule = (workingDate,startTime,endTime,note,token) =>{
             .then(res => res.json())
             .then(parsedRes => {
                 console.log(parsedRes);
-                dispatch(getSchedules());
+                dispatch(getSchedules(userId,token));
                 // dispatch(uiStopLoading());
             });
         };
 };
-export const getSchedules = () => {
+export const getSchedules = (userId,token) => {
     return dispatch => {
-        fetch("https://beezdeez-791a4.firebaseio.com/schedules/.json")
+        fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+"/.json?auth="+ token)
         .catch(err => {
             alert("Something went wrong, sorry :/");
             console.log(err);
@@ -36,11 +36,13 @@ export const getSchedules = () => {
         .then(res => res.json())
         .then(parsedRes => {
             const schedules = [];
-            for (let key in parsedRes) {
-                schedules.push({
-                    ...parsedRes[key],
-                    key: key
-                });
+            if(parsedRes != null){
+              for (let key in parsedRes) {
+                  schedules.push({
+                      ...parsedRes[key],
+                      key: key
+                  });
+              }
             }
             dispatch(setSchedules(schedules));
         });
@@ -52,10 +54,11 @@ export const setSchedules = schedules => {
         schedules: schedules
     };
 };
-export const updateSchedule = (key,workingDate,startTime,endTime,note) =>{
+export const updateSchedule = (key,workingDate,startTime,endTime,note,userId,token) =>{
   return dispatch => {
       // dispatch(uiStartLoading());
-      fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+key+".json", {
+      // fetch("https://beezdeez-791a4.firebaseio.com/profile/.json?auth="+ token)
+      fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+"/"+key+"/.json", {
           method: 'PUT',
           body: JSON.stringify({
           key: key,
@@ -73,7 +76,7 @@ export const updateSchedule = (key,workingDate,startTime,endTime,note) =>{
           .then(res => res.json())
           .then(parsedRes => {
               console.log(parsedRes);
-              dispatch(getSchedules());
+              dispatch(getSchedules(userId,token));
               // dispatch(uiStopLoading());
           });
       };
@@ -87,10 +90,10 @@ export const updateSchedule = (key,workingDate,startTime,endTime,note) =>{
     // };
 
 };
-export const deleteSchedule = (key) =>{
+export const deleteSchedule = (key,userId,token) =>{
   return dispatch => {
       // dispatch(uiStartLoading());
-      fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+key+".json", {
+      fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+"/"+key+".json", {
           method: 'DELETE'
           })
           .catch(err => {
@@ -101,7 +104,7 @@ export const deleteSchedule = (key) =>{
           .then(res => res.json())
           .then(parsedRes => {
               console.log(parsedRes);
-              dispatch(getSchedules());
+              dispatch(getSchedules(userId,token));
               // dispatch(uiStopLoading());
           });
       };

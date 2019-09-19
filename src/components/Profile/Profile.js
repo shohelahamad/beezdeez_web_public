@@ -7,7 +7,7 @@ import * as actions from '../../store/actions/index';
 
 class Profile extends Component {
   componentDidMount(){
-    this.props.onLoadProfile(this.props.token);
+    this.props.onLoadProfile(this.props.userId,this.props.token);
   }
     render () {
         return (
@@ -26,6 +26,7 @@ class Profile extends Component {
 const mapStateToProps = state => {
     return {
         token: state.authinfo.token,
+        userId: state.authinfo.userId,
         userEmail: state.authinfo.emailId,
         firstName: state.profile.firstName,
         lastName: state.profile.lastName,
@@ -34,7 +35,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onLoadProfile: (token) => dispatch(actions.getprofile(token))
+    onLoadProfile: (userId,token) => dispatch(actions.getprofile(userId,token))
   };
 };
 

@@ -1,8 +1,8 @@
 import {EDIT_PROFILE, SET_PROFILE} from './actionTypes';
-export const editprofile = (firstName,lastName,designation,token) =>{
+export const editprofile = (firstName,lastName,designation,userId,token) =>{
 
     return dispatch => {
-        fetch("https://beezdeez-791a4.firebaseio.com/profile.json?auth="+ token, {
+        fetch("https://beezdeez-791a4.firebaseio.com/profile/"+userId+".json?auth="+ token, {
             method: 'PUT',
             body: JSON.stringify({
             firstName: firstName,
@@ -17,23 +17,25 @@ export const editprofile = (firstName,lastName,designation,token) =>{
             .then(res => res.json())
             .then(parsedRes => {
                 console.log(parsedRes);
-                dispatch(getprofile(token));
+                dispatch(getprofile(userId,token));
             });
         };
 };
-export const getprofile = (token) => {
+export const getprofile = (userId,token) => {
     return dispatch => {
-        fetch("https://beezdeez-791a4.firebaseio.com/profile/.json?auth="+ token)
+        fetch("https://beezdeez-791a4.firebaseio.com/profile/"+userId+"/.json?auth="+ token)
         .catch(err => {
             alert("Something went wrong, sorry :/");
             console.log(err);
         })
         .then(res => res.json())
         .then(parsedRes => {
+          if (parsedRes != null){
             const firstName =parsedRes.firstName;
             const lastName =parsedRes.lastName;
             const designation =parsedRes.designation;
             dispatch(setprofile(firstName,lastName,designation));
+          }
         });
     };
 };

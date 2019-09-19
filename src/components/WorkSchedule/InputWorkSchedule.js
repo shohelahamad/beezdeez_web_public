@@ -8,7 +8,7 @@ import * as actions from '../../store/actions/index';
 class InputWorkSchedule extends Component {
 
 scheduleAddedHandler = (workingDate, startTime, endTime,note)=> {
-  this.props.onAddSchedule(workingDate, startTime, endTime,note);
+  this.props.onAddSchedule(workingDate, startTime, endTime,note,this.props.userId,this.props.token);
   this.renderRedirect();
 }
 
@@ -27,13 +27,14 @@ render () {
 }
 const mapStateToProps = state => {
     return {
-        token: state.authinfo.token
+        token: state.authinfo.token,
+        userId: state.authinfo.userId
     };
 };
 const mapDispatchToProps = dispatch => {
 return {
-    onAddSchedule: (workingDate,startTime,endTime,note,token) =>
-    dispatch(actions.addSchedule(workingDate,startTime,endTime,note,token))
+    onAddSchedule: (workingDate,startTime,endTime,note,userId,token) =>
+    dispatch(actions.addSchedule(workingDate,startTime,endTime,note,userId,token))
   };
 };
 

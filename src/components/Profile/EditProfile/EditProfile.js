@@ -97,7 +97,7 @@ class EditProfile extends Component {
 
     submitHandler = ( event ) => {
         event.preventDefault();
-        this.props.onSaveProfile( this.state.controls.firstName.value, this.state.controls.lastName.value, this.state.controls.designation.value, this.props.token );
+        this.props.onSaveProfile( this.state.controls.firstName.value, this.state.controls.lastName.value, this.state.controls.designation.value, this.props.userId, this.props.token );
         console.log( this.state.controls.firstName.value, this.state.controls.lastName.value, this.state.controls.designation.value, this.props.token );
         this.renderRedirect();
     }
@@ -161,13 +161,14 @@ class EditProfile extends Component {
 
 const mapStateToProps = state => {
     return {
-        token: state.authinfo.token
+      token: state.authinfo.token,
+      userId: state.authinfo.userId
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSaveProfile: ( firstName, lastName, designation,token ) => dispatch( actions.editprofile( firstName, lastName, designation,token ) )
+        onSaveProfile: ( firstName, lastName, designation,userId,token ) => dispatch( actions.editprofile( firstName, lastName, designation,userId,token ) )
     };
 };
 
