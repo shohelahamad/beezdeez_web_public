@@ -17,7 +17,6 @@ class Root extends Component {
       // let routs =(
       //   <div>
       //     <Route path="/" exact component={Home} />
-      //     <Route path="/profile" exact component={Profile} />
       //     <Route path="/register" component={Register} />
       //     <Redirect to="/" />
       //   </div>
@@ -26,7 +25,7 @@ class Root extends Component {
       //   routs =(
       //     <div>
       //       <Route path="/" exact component={Home} />
-      //       <Route path="/profile" exact component={Profile} />
+      //       <Route path="/profile" component={Profile} />
       //       <Route path="/logout" component={Logout} />
       //       <Route path="/editprofile" component={EditProfile} />
       //       <Route path="/schedules" component={WorkSchedule} />
@@ -38,6 +37,7 @@ class Root extends Component {
             <div className="Blog">
                 <Navbar isAuth={this.props.isAuthenticated}>
                 </Navbar>
+                {/* {routs} */}
                 <Route path="/" exact component={Home} />
                 <Route path="/profile" exact component={Profile} />
                 <Route path="/register" component={Register} />

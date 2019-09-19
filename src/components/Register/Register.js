@@ -84,10 +84,13 @@ class Register extends Component {
         };
         this.setState( { controls: updatedControls } );
     }
-
+    // renderRedirect = () => {
+    //   this.props.history.push("/profile");
+    // }
     submitHandler = ( event ) => {
         event.preventDefault();
         this.props.onAuth( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup );
+        // this.renderRedirect();
     }
 
     switchAuthModeHandler = () => {

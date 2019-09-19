@@ -25,18 +25,20 @@ export const getprofile = (userId,token) => {
     return dispatch => {
         fetch("https://beezdeez-791a4.firebaseio.com/profile/"+userId+"/.json?auth="+ token)
         .catch(err => {
-            alert("Something went wrong, sorry :/");
+            alert("Something went wrong");
             console.log(err);
         })
         .then(res => res.json())
         .then(parsedRes => {
+          let firstName ='';
+          let lastName ='';
+          let designation ='';
           if (parsedRes != null){
-            const firstName =parsedRes.firstName;
-            const lastName =parsedRes.lastName;
-            const designation =parsedRes.designation;
-            dispatch(setprofile(firstName,lastName,designation));
+            firstName =parsedRes.firstName;
+            lastName =parsedRes.lastName;
+            designation =parsedRes.designation;
           }
-          dispatch(setprofile("","",""));
+          dispatch(setprofile(firstName,lastName,designation));
         });
     };
 };

@@ -61,7 +61,6 @@ export const updateSchedule = (key,workingDate,startTime,endTime,note,userId,tok
       fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+"/"+key+"/.json", {
           method: 'PUT',
           body: JSON.stringify({
-          key: key,
           workingDate: workingDate,
           startTime: startTime,
           endTime: endTime,
