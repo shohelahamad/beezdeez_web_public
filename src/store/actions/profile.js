@@ -36,6 +36,7 @@ export const getprofile = (userId,token) => {
             const designation =parsedRes.designation;
             dispatch(setprofile(firstName,lastName,designation));
           }
+          dispatch(setprofile("","",""));
         });
     };
 };
