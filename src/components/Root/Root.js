@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import { Route, Link, Switch, Redirect } from 'react-router-dom';
-import './Root.css';
+import CSS from './Root.css';
 import Register from '../Register/Register';
 import Home from '../Home/Home';
 import Profile from '../Profile/Profile';
@@ -34,7 +34,7 @@ class Root extends Component {
       //   );
       // }
         return (
-            <div className="Blog">
+            <div className={CSS.Blog}>
                 <Navbar isAuth={this.props.isAuthenticated}>
                 </Navbar>
                 {/* {routs} */}
