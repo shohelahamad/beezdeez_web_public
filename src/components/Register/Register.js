@@ -4,7 +4,7 @@ import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Button from '../../components/UI/Button/Button';
 import { Redirect } from 'react-router-dom';
-import './Auth.css';
+import  classes from './Auth.css';
 import * as actions from '../../store/actions/index';
 class Register extends Component {
     state = {
@@ -136,7 +136,7 @@ class Register extends Component {
           authRedirect = <Redirect to="/profile" />
         }
         return (
-            <div className={"Auth"}>
+            <div className={classes.Auth}>
                 {authRedirect}
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
