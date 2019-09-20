@@ -4,7 +4,7 @@ export const addSchedule = (workingDate,startTime,endTime,note,userId,token) =>{
 
     return dispatch => {
         // dispatch(uiStartLoading());
-        fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+".json?auth="+ token, {
+        fetch("https://alphajump-time-schedule.firebaseio.com/schedules/"+userId+".json?auth="+ token, {
             method: 'POST',
             body: JSON.stringify({
             workingDate: workingDate,
@@ -28,7 +28,7 @@ export const addSchedule = (workingDate,startTime,endTime,note,userId,token) =>{
 };
 export const getSchedules = (userId,token) => {
     return dispatch => {
-        fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+"/.json?auth="+ token)
+        fetch("https://alphajump-time-schedule.firebaseio.com/schedules/"+userId+"/.json?auth="+ token)
         .catch(err => {
             alert("Something went wrong, sorry :/");
             console.log(err);
@@ -58,7 +58,7 @@ export const updateSchedule = (key,workingDate,startTime,endTime,note,userId,tok
   return dispatch => {
       // dispatch(uiStartLoading());
       // fetch("https://beezdeez-791a4.firebaseio.com/profile/.json?auth="+ token)
-      fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+"/"+key+"/.json", {
+      fetch("https://alphajump-time-schedule.firebaseio.com/schedules/"+userId+"/"+key+"/.json", {
           method: 'PUT',
           body: JSON.stringify({
           workingDate: workingDate,
@@ -92,7 +92,7 @@ export const updateSchedule = (key,workingDate,startTime,endTime,note,userId,tok
 export const deleteSchedule = (key,userId,token) =>{
   return dispatch => {
       // dispatch(uiStartLoading());
-      fetch("https://beezdeez-791a4.firebaseio.com/schedules/"+userId+"/"+key+".json", {
+      fetch("https://alphajump-time-schedule.firebaseio.com/schedules/"+userId+"/"+key+".json", {
           method: 'DELETE'
           })
           .catch(err => {

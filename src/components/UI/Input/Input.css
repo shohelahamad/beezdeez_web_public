@@ -1,32 +1,144 @@
-.Input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+/*//////////////////////////////////////////////////////////////////
+ [ REBOOT ]*/
+*, *:before, *:after {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
+body, html {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  color: #666666;
+  height: 100%;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/*---------------------------------------------*/
+a:focus {
+  outline: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.s2_txt1 {
+  font-family: 'Source Sans Pro';
+  font-size: 15px;
+  line-height: 1.5;
+  color: #555555;
+}
+/*---------------------------------------------*/
+.placeholder0::-webkit-input-placeholder {
+  color: #999999;
+}
+.placeholder0:-moz-placeholder {
+  color: #999999;
+}
+.placeholder0::-moz-placeholder {
+  color: #999999;
+}
+.placeholder0:-ms-input-placeholder {
+  color: #999999;
+}
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+.input100 {
+  display: block;
+  width: 100%;
+  background: transparent;
+}
+input.input100 {
+  height: 100%;
+  padding: 0 22px 0 22px;
+}
+/*------------------------------------------------------------------
+ [ Focus Input ]*/
+.focus_input100 {
+  position: absolute;
+  display: block;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  top: -2px;
+  left: -2px;
+  pointer-events: none;
+  border: 2px solid #fe583e;
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: scaleX(1.1) scaleY(1.2);
+  -moz-transform: scaleX(1.1) scaleY(1.2);
+  -ms-transform: scaleX(1.1) scaleY(1.2);
+  -o-transform: scaleX(1.1) scaleY(1.2);
+  transform: scaleX(1.1) scaleY(1.2);
+}
+.input100:focus + .focus_input100 {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+/*------------------------------------------------------------------
+ [ Input ]*/
+.wrap_input100 {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  height: 50px;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+}
+/*---------------------------------------------*/
+.m_b_10 {
+  margin-bottom: 10px;
+}
+.validate_input {
+  position: relative;
+}
+.Invalid{
+  border: 2px solid red;
+  border-radius: 4px;
+}
+@keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
 
-.Label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-}
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
 
-.InputElement {
-    outline: none;
-    border: 1px solid #ccc;
-    background-color: white;
-    font: inherit;
-    padding: 6px 10px;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-}
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
 
-.InputElement:focus {
-    outline: none;
-    background-color: #ccc;
-}
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
 
-.Invalid {
-    border: 1px solid red;
-    background-color: #FDA49A;
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
 }
+.bounceInLeft {
+  animation-name: bounceInLeft;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  }

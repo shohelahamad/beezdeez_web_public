@@ -9,7 +9,6 @@ class Navbar extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
                             { !this.props.isAuth ? <li><Link to="/">About</Link></li> : null}
                             { this.props.isAuth ? <li><Link to="/profile">Profile</Link></li> : null}
                             { this.props.isAuth ? <li><Link to="/schedules">Work Schedule</Link></li> : null}

@@ -4,7 +4,7 @@ import classes from './Input.css';
 
 const input = ( props ) => {
     let inputElement = null;
-    const inputClasses = [classes.InputElement];
+    const inputClasses = [classes.s2_txt1, classes.placeholder0, classes.input100];
 
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
@@ -48,9 +48,9 @@ const input = ( props ) => {
     }
 
     return (
-        <div className={classes.Input}>
-            <label className={classes.Label}>{props.label}</label>
+        <div className={[classes.wrap_input100, classes.m_b_10, classes.validate_input].join(' ')}>
             {inputElement}
+        <span className={classes.focus_input100}></span>
         </div>
     );
 

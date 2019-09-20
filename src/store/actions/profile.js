@@ -2,7 +2,8 @@ import {EDIT_PROFILE, SET_PROFILE} from './actionTypes';
 export const editprofile = (firstName,lastName,designation,userId,token) =>{
 
     return dispatch => {
-        fetch("https://beezdeez-791a4.firebaseio.com/profile/"+userId+".json?auth="+ token, {
+        // fetch("https://beezdeez-791a4.firebaseio.com/profile/"+userId+".json?auth="+ token, {
+        fetch("https://alphajump-time-schedule.firebaseio.com/profile/"+userId+".json?auth="+ token, {
             method: 'PUT',
             body: JSON.stringify({
             firstName: firstName,
@@ -23,7 +24,7 @@ export const editprofile = (firstName,lastName,designation,userId,token) =>{
 };
 export const getprofile = (userId,token) => {
     return dispatch => {
-        fetch("https://beezdeez-791a4.firebaseio.com/profile/"+userId+"/.json?auth="+ token)
+        fetch("https://alphajump-time-schedule.firebaseio.com/profile/"+userId+"/.json?auth="+ token)
         .catch(err => {
             alert("Something went wrong");
             console.log(err);

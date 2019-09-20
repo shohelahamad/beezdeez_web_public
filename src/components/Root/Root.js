@@ -35,8 +35,7 @@ class Root extends Component {
       // }
         return (
             <div className={CSS.Blog}>
-                <Navbar isAuth={this.props.isAuthenticated}>
-                </Navbar>
+                {this.props.isAuthenticated? <Navbar isAuth={this.props.isAuthenticated}/>: false}
                 {/* {routs} */}
                 <Route path="/" exact component={Home} />
                 <Route path="/profile" exact component={Profile} />
