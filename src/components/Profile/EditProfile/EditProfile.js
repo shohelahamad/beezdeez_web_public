@@ -5,6 +5,8 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Button from '../../../components/UI/Button/Button';
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../../store/actions/index';
+import grad from '../../../assets/styles/BsGrad.css';
+import box from '../../../assets/styles/BsBox.css';
 class EditProfile extends Component {
     state = {
         controls: {
@@ -147,14 +149,22 @@ class EditProfile extends Component {
         //   authRedirect = <Redirect to="/profile" />
         // }
         return (
-            <div className=''>
-                {authRedirect}
-                {errorMessage}
-                <form onSubmit={this.submitHandler}>
-                    {form}
-                    <Button btnType="Success">Save Profile</Button>
-                </form>
-            </div>
+            <div className={grad.container}>
+              <div className={grad.row}>
+                <div className={grad.col_12}>
+                  <div className={box.box}>
+                    <div className={box.box_middle}>
+                      {authRedirect}
+                      {errorMessage}
+                      <form onSubmit={this.submitHandler}>
+                          {form}
+                          <Button btnType="Success">Save Profile</Button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
         );
     }
 }

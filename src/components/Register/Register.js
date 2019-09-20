@@ -141,7 +141,7 @@ class Register extends Component {
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
-                    <Button btnType="Success">{this.state.isSignup ? 'SIGNUP' : 'SIGNIN'}</Button>
+                    <button btnType="Success">{this.state.isSignup ? 'SIGNUP' : 'SIGNIN'}</button>
                 </form>
                 <Button
                     clicked={this.switchAuthModeHandler}
