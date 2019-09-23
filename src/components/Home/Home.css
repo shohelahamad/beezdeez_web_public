@@ -7030,7 +7030,7 @@ input.input100 {
 .bor2 {
   background: #fe583e;
   cursor: pointer;
-  border: 5px solid rgba(255, 255, 255, 0.5);
+  border: 5px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
 }
 /*==================================================================
@@ -7093,7 +7093,7 @@ input.input100 {
 }
 .overlay1::before {
   content: "";
-  opacity: 0.3;
+  opacity: 0.7;
   display: block;
   position: absolute;
   z-index: -3;
@@ -7102,7 +7102,8 @@ input.input100 {
   top: 0;
   left: 0;
   /* background-color: rgba(0,0,0,0.8); */
-  background-color: #F7180B;
+  /*background-color: #F7180B;*/
+  background-color: rgba(254,88,62,0.7);
 }
 .overlay1::after {
   content: "";

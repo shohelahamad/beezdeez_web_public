@@ -111,13 +111,16 @@ class Home extends Component {
         }
         // this.renderRedirect();
     }
-
     switchAuthModeHandler = () => {
         this.setState(prevState => {
             return {isSignup: !prevState.isSignup};
         });
     }
     render () {
+      let bgImgUrl = '/images/background/homepage_page_bg.jpg';
+      var bgStyle = {
+        backgroundImage: 'url(' + bgImgUrl + ')'
+      };
       const formElementsArray = [];
       if(!this.state.isSignup){
         for ( let key in this.state.controls ) {
@@ -167,7 +170,7 @@ class Home extends Component {
         }
         return (
               <div className={[homeCss.size1, homeCss.bg0, homeCss.where1_parent].join(' ')}>
-                <div className={[homeCss.flex_c_m, homeCss.bg_img1, homeCss.size2, homeCss.where1, homeCss.overlay1, homeCss.where2, homeCss.respon2 ].join(' ')}>
+                <div className={[homeCss.flex_c_m, homeCss.bg_img1, homeCss.size2, homeCss.where1, homeCss.overlay1, homeCss.where2, homeCss.respon2 ].join(' ')} style={bgStyle}>
                     <div className={[homeCss.wsize2, homeCss.flex_w, homeCss.flex_c_m, homeCss.js_tilt ].join(' ')}>
                         <div className={[homeCss.flex_col_c_m, homeCss.size6, homeCss.bor2, homeCss.m_l_10, homeCss.m_r_10, homeCss.m_t_15, homeCss.hoverable].join(' ')}>
                             <div className={[homeCss.material_icons, homeCss.text_white].join(' ')}></div>
