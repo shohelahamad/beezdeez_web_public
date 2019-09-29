@@ -4,7 +4,7 @@ import Input from '../../components/UI/Input/Input';
 import { Redirect } from 'react-router-dom';
 import { Route, Link } from 'react-router-dom';
 import homeCss from './Home.css';
-import logo from '../../logo.svg';
+import logo from '../../Beezdeezlogo.png';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 class Home extends Component {
@@ -24,33 +24,33 @@ class Home extends Component {
                 valid: false,
                 touched: false
             },
-            password: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'password',
-                    placeholder: 'Password'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    minLength: 6
-                },
-                valid: false,
-                touched: false
-            },
-            confirmPassword: {
-              elementType: 'input',
-              elementConfig: {
-                  type: 'password',
-                  placeholder: 'Re-enter Password'
-              },
-              value: '',
-              valid: false,
-              validationRules: {
-                equalTo: "password"
-              },
-              touched: false
-            }
+            // password: {
+            //     elementType: 'input',
+            //     elementConfig: {
+            //         type: 'password',
+            //         placeholder: 'Password'
+            //     },
+            //     value: '',
+            //     validation: {
+            //         required: true,
+            //         minLength: 6
+            //     },
+            //     valid: false,
+            //     touched: false
+            // },
+            // confirmPassword: {
+            //   elementType: 'input',
+            //   elementConfig: {
+            //       type: 'password',
+            //       placeholder: 'Re-enter Password'
+            //   },
+            //   value: '',
+            //   valid: false,
+            //   validationRules: {
+            //     equalTo: "password"
+            //   },
+            //   touched: false
+            // }
         },
         isSignup: false
     }
@@ -196,15 +196,18 @@ class Home extends Component {
                 </div>
                 <div className={[homeCss.size3, homeCss.flex_col_sb, homeCss.flex_w, homeCss.p_l_75, homeCss.p_r_75, homeCss.p_t_45, homeCss.p_b_45, homeCss.respon1].join(' ')}>
                     <div className={homeCss.wrap_pic1}>
-                        <img src={logo} alt="ALPHAJUMP-LOGO"/>
+                        <img src={logo} alt="BEEZDEEZ-LOGO"/>
                     </div>
 
                     <div className={[homeCss.p_t_50, homeCss.p_b_60].join(' ')}>
                         <p className={[homeCss.m1_txt1, homeCss.p_b_36].join(' ')}>
 
-                            <span className={homeCss.m1_txt2}>Welcome to ALPHAJUMP Portal!</span>
-                            <br/> Please log in
+                            <span className={homeCss.m1_txt2}>Welcome to BeezDeez</span>
+                            
                         </p>
+                        <h2 className={[homeCss.p_b_36].join(' ')}>
+                            <b/>Please subscribe to stay updated. We will inform you when our product is ready to use.
+                        </h2>
                         <p className={[homeCss.m1_txt1, homeCss.p_b_36].join(' ')}>
 
                             {/* <span className={homeCss.m1_txt1}>Enter your email address and we'll send you a link to reset your password.</span> */}
@@ -218,14 +221,14 @@ class Home extends Component {
                               {form}
                               <div className={homeCss.w_full}>
                                   <button className={[homeCss.flex_c_m, homeCss.s2_txt2, homeCss.size4, homeCss.bg1, homeCss.bor1, homeCss.hov1, homeCss.trans_04].join(' ')}>
-                                  {this.state.isSignup ? 'Signup' : 'Signin'}
+                                  {this.state.isSignup ? 'Signup' : 'Subscribe'}
                                 </button>
                               </div>
-                              <div className={[homeCss.w_full, homeCss.text_right, homeCss.m_t_10].join(' ')}>
+                              {/* <div className={[homeCss.w_full, homeCss.text_right, homeCss.m_t_10].join(' ')}>
                                 <a className={[homeCss.c_pointer, homeCss.text_primary].join(' ')} onClick={this.switchAuthModeHandler}>
                                     {this.state.isSignup ? 'Signin' : 'Signup'}
                                 </a>
-                              </div>
+                              </div> */}
                             </div>
                             {/* <div id="forgot-password-form" className={homeCss.bounceInLeft}>
 
@@ -255,19 +258,16 @@ class Home extends Component {
                     </div>
 
                     <div className={homeCss.flex_w}>
-                        <a href="https://www.alphajump.de/" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
-                            <img src="/images/icons/logo-white.svg" className={homeCss.img_fluid} alt="" />
-                        </a>
-                        <a href="https://instagram.com/alphajump" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
+                        <a href="https://instagram.com/beezdeez" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
                             <img src="/images/icons/instagram.svg" className={homeCss.img_fluid} alt="" />
                         </a>
-                        <a href="https://facebook.com/alphajump" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
+                        <a href="https://facebook.com/beezdeez" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
                             <img src="/images/icons/facebook.svg" className={homeCss.img_fluid} alt="" />
                         </a>
-                        <a href="https://twitter.com/alphajump" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
+                        <a href="https://twitter.com/beezdeez" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
                             <img src="/images/icons/twitter.svg" className={homeCss.img_fluid} alt="" />
                         </a>
-                        <a href="https://www.youtube.com/alphajump" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
+                        <a href="https://www.youtube.com/beezdeez" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
                             <img src="/images/icons/youtube.svg" className={homeCss.img_fluid} alt="" />
                         </a>
                     </div>

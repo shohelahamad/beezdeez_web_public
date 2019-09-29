@@ -66,7 +66,7 @@ input.input100 {
   top: -2px;
   left: -2px;
   pointer-events: none;
-  border: 2px solid #fe583e;
+  border: 2px solid #075BB6;
   border-radius: 5px;
   visibility: hidden;
   opacity: 0;
@@ -107,7 +107,7 @@ input.input100 {
   position: relative;
 }
 .Invalid{
-  border: 2px solid red;
+  /* border: 2px solid red; */
   border-radius: 4px;
 }
 @keyframes bounceInLeft {

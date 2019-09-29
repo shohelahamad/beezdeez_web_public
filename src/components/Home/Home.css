@@ -6807,7 +6807,7 @@ input.input100 {
   top: -2px;
   left: -2px;
   pointer-events: none;
-  border: 2px solid #fe583e;
+  border: 2px solid #075BB6;
   border-radius: 5px;
   visibility: hidden;
   opacity: 0;
@@ -6998,7 +6998,7 @@ input.input100 {
   background-color: #fff;
 }
 .bg1 {
-  background-color: #fe583e;
+  background-color: #075BB6;
 }
 .bg-orange {
   background-color: #F7180B;
@@ -7028,7 +7028,7 @@ input.input100 {
   border-radius: 5px;
 }
 .bor2 {
-  background: #fe583e;
+  background: #075BB6;
   cursor: pointer;
   border: 5px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
@@ -7103,7 +7103,7 @@ input.input100 {
   left: 0;
   /* background-color: rgba(0,0,0,0.8); */
   /*background-color: #F7180B;*/
-  background-color: rgba(254,88,62,0.7);
+  background-color: rgba(29,161,242,0.8);
 }
 .overlay1::after {
   content: "";
@@ -7497,7 +7497,7 @@ input.input100 {
   border-radius: 50%;
   text-align: center;
   color: #FF233E;
-  background: #fe583e;
+  background: #075BB6;
 }
 .icon_badge_big img {
   margin-top: 10px;
@@ -7505,7 +7505,7 @@ input.input100 {
   width: 30px;
 }
 .text_primary {
-  color: #fe583e !important;
+  color: #075BB6 !important;
 }
 .material-icons {
   font-size: 50px;
