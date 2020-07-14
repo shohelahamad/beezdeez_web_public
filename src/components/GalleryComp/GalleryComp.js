@@ -6,7 +6,9 @@ import { photos } from "../../assets/statics/photos";
 class GalleryComp extends Component {
     render() {
         return (
-            <Gallery photos={photos} />
+            <div id={'imageGallery'}>
+                <Gallery photos={photos} />
+            </div>
         );
     }
 }
