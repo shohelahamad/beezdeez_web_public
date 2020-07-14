@@ -1,293 +1,53 @@
 import React, { Component } from 'react';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import Input from '../../components/UI/Input/Input';
-import { Redirect } from 'react-router-dom';
-import { Route, Link } from 'react-router-dom';
-import homeCss from './Home.css';
-import logo from '../../Beezdeezlogo.png';
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions/index';
+import { Carousel, Container } from 'react-bootstrap';
+import GalleryComp from '../GalleryComp/GalleryComp';
+
 class Home extends Component {
-  state = {
-        controls: {
-            email: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'email',
-                    placeholder: 'Mail Address'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    isEmail: true
-                },
-                valid: false,
-                touched: false
-            },
-            // password: {
-            //     elementType: 'input',
-            //     elementConfig: {
-            //         type: 'password',
-            //         placeholder: 'Password'
-            //     },
-            //     value: '',
-            //     validation: {
-            //         required: true,
-            //         minLength: 6
-            //     },
-            //     valid: false,
-            //     touched: false
-            // },
-            // confirmPassword: {
-            //   elementType: 'input',
-            //   elementConfig: {
-            //       type: 'password',
-            //       placeholder: 'Re-enter Password'
-            //   },
-            //   value: '',
-            //   valid: false,
-            //   validationRules: {
-            //     equalTo: "password"
-            //   },
-            //   touched: false
-            // }
-        },
-        isSignup: false
-    }
-    checkValidity ( value, rules ) {
-        let isValid = true;
-        if ( !rules ) {
-            return true;
-        }
 
-        if ( rules.required ) {
-            isValid = value.trim() !== '' && isValid;
-        }
+    render() {
 
-        if ( rules.minLength ) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-
-        if ( rules.maxLength ) {
-            isValid = value.length <= rules.maxLength && isValid
-        }
-
-        if ( rules.isEmail ) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test( value ) && isValid
-        }
-
-        if ( rules.isNumeric ) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test( value ) && isValid
-        }
-
-        return isValid;
-    }
-
-    inputChangedHandler = ( event, controlName ) => {
-        const updatedControls = {
-            ...this.state.controls,
-            [controlName]: {
-                ...this.state.controls[controlName],
-                value: event.target.value,
-                valid: this.checkValidity( event.target.value, this.state.controls[controlName].validation ),
-                touched: true
-            }
-        };
-        this.setState( { controls: updatedControls } );
-    }
-    // renderRedirect = () => {
-    //   this.props.history.push("/profile");
-    // }
-    submitHandler = ( event ) => {
-        event.preventDefault();
-        if(this.state.isSignup && (this.state.controls.password.value === this.state.controls.confirmPassword.value)){
-          this.props.onAuth( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup );
-        }else if (!this.state.isSignup) {
-          this.props.onAuth( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup );
-        }else {
-          alert("Passwords don't match");
-        }
-        // this.renderRedirect();
-    }
-    switchAuthModeHandler = () => {
-        this.setState(prevState => {
-            return {isSignup: !prevState.isSignup};
-        });
-    }
-    render () {
-      let bgImgUrl = '/images/background/homepage_page_bg.jpg';
-      var bgStyle = {
-        backgroundImage: 'url(' + bgImgUrl + ')'
-      };
-      const formElementsArray = [];
-      if(!this.state.isSignup){
-        for ( let key in this.state.controls ) {
-          if(key != 'confirmPassword'){
-            formElementsArray.push( {
-              id: key,
-              config: this.state.controls[key]
-            } );
-          }
-        }
-      }else {
-        for ( let key in this.state.controls ) {
-          formElementsArray.push( {
-              id: key,
-              config: this.state.controls[key]
-          } );
-      }
-      }
-
-      let form = formElementsArray.map( formElement => (
-              <Input
-                  key={formElement.id}
-                  elementClasses={homeCss.wrap_input100, homeCss.m_b_10, homeCss.validate_input}
-                  elementType={formElement.config.elementType}
-                  elementConfig={formElement.config.elementConfig}
-                  value={formElement.config.value}
-                  invalid={!formElement.config.valid}
-                  shouldValidate={formElement.config.validation}
-                  touched={formElement.config.touched}
-                  changed={( event ) => this.inputChangedHandler( event, formElement.id )} />
-        ) );
-
-        if (this.props.loading) {
-            form = <Spinner />
-        }
-
-        let errorMessage = null;
-
-        if (this.props.error) {
-            errorMessage = (
-                <p>{this.props.error.message}</p>
-            );
-        }
-        let authRedirect = null ;
-        if (this.props.isAuthenticated){
-          authRedirect = <Redirect to="/profile" />
-        }
         return (
-              <div className={[homeCss.size1, homeCss.bg0, homeCss.where1_parent].join(' ')}>
-                <div className={[homeCss.flex_c_m, homeCss.bg_img1, homeCss.size2, homeCss.where1, homeCss.overlay1, homeCss.where2, homeCss.respon2 ].join(' ')} style={bgStyle}>
-                    <div className={[homeCss.wsize2, homeCss.flex_w, homeCss.flex_c_m, homeCss.js_tilt ].join(' ')}>
-                        <div className={[homeCss.flex_col_c_m, homeCss.size6, homeCss.bor2, homeCss.m_l_10, homeCss.m_r_10, homeCss.m_t_15, homeCss.hoverable].join(' ')}>
-                            <div className={[homeCss.material_icons, homeCss.text_white].join(' ')}></div>
-                            <span className={homeCss.s2_txt4}>Home</span>
-                        </div>
+            <div>
+                <Carousel>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="https://via.placeholder.com/800x400"
+                            alt="First slide"
+                        />
+                        <Carousel.Caption>
+                            <h3>First slide label</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="https://via.placeholder.com/800x400"
+                            alt="Third slide"
+                        />
 
-                        <div className={[homeCss.flex_col_c_m, homeCss.size6, homeCss.bor2, homeCss.m_l_10, homeCss.m_r_10, homeCss.m_t_15, homeCss.hoverable].join(' ')}>
-                            <div className={[homeCss.material_icons, homeCss.text_white].join(' ')}></div>
-                            <span className={homeCss.s2_txt4}>About us</span>
-                        </div>
-                    </div>
-                    <div className={[homeCss.wsize2, homeCss.flex_w, homeCss.flex_c_m, homeCss.cd100, homeCss.js_tilt ].join(' ')}>
-                        <div className={[homeCss.flex_col_c_m, homeCss.size6, homeCss.bor2, homeCss.m_l_10, homeCss.m_r_10, homeCss.m_t_15, homeCss.hoverable].join(' ')}>
-                            <div className={[homeCss.material_icons, homeCss.text_white].join(' ')}></div>
-                            <span className={homeCss.s2_txt4}>Kontakt</span>
-                        </div>
+                        <Carousel.Caption>
+                            <h3>Second slide label</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="https://via.placeholder.com/800x400"
+                            alt="Third slide"
+                        />
 
-                        <div className={[homeCss.flex_col_c_m, homeCss.size6, homeCss.bor2, homeCss.m_l_10, homeCss.m_r_10, homeCss.m_t_15, homeCss.hoverable].join(' ')}>
-                            <div className={[homeCss.material_icons, homeCss.text_white].join(' ')}></div>
-                            <span className={homeCss.s2_txt4}>Impressum</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={[homeCss.size3, homeCss.flex_col_sb, homeCss.flex_w, homeCss.p_l_75, homeCss.p_r_75, homeCss.p_t_45, homeCss.p_b_45, homeCss.respon1].join(' ')}>
-                    <div className={homeCss.wrap_pic1}>
-                        <img src={logo} alt="BEEZDEEZ-LOGO"/>
-                    </div>
-
-                    <div className={[homeCss.p_t_50, homeCss.p_b_60].join(' ')}>
-                        <p className={[homeCss.m1_txt1, homeCss.p_b_36].join(' ')}>
-
-                            <span className={homeCss.m1_txt2}>Welcome to BeezDeez</span>
-                            
-                        </p>
-                        <h2 className={[homeCss.p_b_36].join(' ')}>
-                            <b/>Please subscribe to stay updated. We will inform you when our product is ready to use.
-                        </h2>
-                        <p className={[homeCss.m1_txt1, homeCss.p_b_36].join(' ')}>
-
-                            {/* <span className={homeCss.m1_txt1}>Enter your email address and we'll send you a link to reset your password.</span> */}
-
-                        </p>
-                        {authRedirect}
-                        {errorMessage}
-                        <form className={[homeCss.contact100_form, homeCss.validate_form].join(' ')} onSubmit={this.submitHandler}>
-                          <div id="login-content" className={[homeCss.no_select,homeCss.bounceInLeft].join(' ')}>
-                            <div id="login-form" className={homeCss.firstLoad}>
-                              {form}
-                              <div className={homeCss.w_full}>
-                                  <button className={[homeCss.flex_c_m, homeCss.s2_txt2, homeCss.size4, homeCss.bg1, homeCss.bor1, homeCss.hov1, homeCss.trans_04].join(' ')}>
-                                  {this.state.isSignup ? 'Signup' : 'Subscribe'}
-                                </button>
-                              </div>
-                              {/* <div className={[homeCss.w_full, homeCss.text_right, homeCss.m_t_10].join(' ')}>
-                                <a className={[homeCss.c_pointer, homeCss.text_primary].join(' ')} onClick={this.switchAuthModeHandler}>
-                                    {this.state.isSignup ? 'Signin' : 'Signup'}
-                                </a>
-                              </div> */}
-                            </div>
-                            {/* <div id="forgot-password-form" className={homeCss.bounceInLeft}>
-
-                              <div className={[homeCss.wrap_input100, homeCss.m_b_20, homeCss.validate_input].join(' ')} data-validate="Email is required: ex@abc.xyz">
-                                <input className={[homeCss.s2_txt1, homeCss.placeholder0, homeCss.input100].join(' ')} type="text" name="email" placeholder="E-Mail"/>
-                                <span className={homeCss.focus_input100}></span>
-                              </div>
-
-                              <div className={homeCss.w_full}>
-                                <button className={[homeCss.flex_c_m, homeCss.s2_txt2, homeCss.size4, homeCss.bg1, homeCss.bor1, homeCss.hov1, homeCss.trans_04].join(' ')}>
-                                  Request New Password
-                                </button>
-                              </div>
-                              <div className={[homeCss.w_full, homeCss.text_right].join(' ')}>
-                                <a className={[homeCss.c_pointer, homeCss.text_primary].join(' ')}>
-                                  Login
-                                </a>
-                              </div>
-                            </div> */}
-                          </div>
-
-                        </form>
-
-
-                        <p className="s2-txt3 p-t-18">
-                        </p>
-                    </div>
-
-                    <div className={homeCss.flex_w}>
-                        <a href="https://instagram.com/beezdeez" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
-                            <img src="/images/icons/instagram.svg" className={homeCss.img_fluid} alt="" />
-                        </a>
-                        <a href="https://facebook.com/beezdeez" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
-                            <img src="/images/icons/facebook.svg" className={homeCss.img_fluid} alt="" />
-                        </a>
-                        <a href="https://twitter.com/beezdeez" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
-                            <img src="/images/icons/twitter.svg" className={homeCss.img_fluid} alt="" />
-                        </a>
-                        <a href="https://www.youtube.com/beezdeez" className={[homeCss.icon_badge_big,homeCss.hoverable].join(' ')} target="_blank">
-                            <img src="/images/icons/youtube.svg" className={homeCss.img_fluid} alt="" />
-                        </a>
-                    </div>
-                </div>
+                        <Carousel.Caption>
+                            <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
+                <GalleryComp/>
             </div>
         );
     }
 }
-const mapStateToProps = state => {
-    return {
-        loading: state.authinfo.loading,
-        error: state.authinfo.error,
-        isAuthenticated: state.authinfo.token !== null
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onAuth: ( email, password, isSignup ) => dispatch( actions.tryAuth( email, password, isSignup ) )
-    };
-};
-
-export default connect( mapStateToProps, mapDispatchToProps )( Home );
+export default Home;

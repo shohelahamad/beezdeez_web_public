@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import logo from '../../Beezdeezlogo.png';
 
-class Navbar extends Component {
-    render () {
+class NavbarUI extends Component {
+    render() {
         return (
-            <div className="Blog">
-                <header>
-                    <nav>
-                        <ul>
-                            { !this.props.isAuth ? <li><Link to="/">About</Link></li> : null}
-                            { this.props.isAuth ? <li><Link to="/profile">Profile</Link></li> : null}
-                            { this.props.isAuth ? <li><Link to="/schedules">Work Schedule</Link></li> : null}
-                            { this.props.isAuth ? <li><Link to="/events">Events & Meeting </Link></li> : null}
-                            { !this.props.isAuth ?  <li><Link to={{
-                                pathname: '/register',
-                                hash: '#submit',
-                                search: '?quick-submit=true'
-                            }}>Login/Register</Link></li> : <li><Link to={{
-                                pathname: '/logout',
-                                hash: '#submit',
-                                search: '?quick-submit=true'
-                            }}>Logout</Link></li>}
-                        </ul>
-                    </nav>
-                </header>
-            </div>
+            <Navbar expand="lg" variant="light" bg="light">
+                <Container>
+                    <Navbar.Brand href="#">
+                        <img src={logo} style={{ maxHeight: 30 }} alt="BEEZDEEZ-LOGO" />
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link href="#link">Link</Nav.Link>
+                            <Nav.Link href="#link"></Nav.Link>
+                        </Nav>
+                        <Button variant="outline-primary">Subscribe</Button>                            
+                    </Navbar.Collapse>
+
+                </Container>
+            </Navbar>
         );
     }
 }
 
-export default Navbar;
+export default NavbarUI;
