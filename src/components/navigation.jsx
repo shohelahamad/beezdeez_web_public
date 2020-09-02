@@ -18,8 +18,8 @@ export class Navigation extends Component {
               <span className="icon-bar"></span>{" "}
               <span className="icon-bar"></span>{" "}
             </button>
-            <a className="navbar-brand page-scroll" href="#page-top">
-              React Landing Page
+            <a className="navbar-brand page-scroll" href="#page-top" style={{padding: 0}}>
+            <img src="Beezdeezlogo.png" alt="Girl in a jacket" style={{height: 45}}/>
             </a>{" "}
           </div>
 
