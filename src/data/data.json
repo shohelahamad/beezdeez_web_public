@@ -54,40 +54,56 @@
 
     ],
     "Testimonials": [{
-            "img": "img/testimonials/01.jpg",
-            "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-            "name": "John Doe"
+            "img": "img/testimonials/jn.jpg",
+            "text": "\"Simply beautiful. The only thing I would change, I'd add the ability to set not just the date of the reminders but also the time. And when setting the time, I'd add the ability to use previously selected times. Example: if last week I set a task as due at 3 PM, then when I set next task.\"",
+            "name": "Md Jakaria Nawaz"
         },
         {
-            "img": "img/testimonials/02.jpg",
-            "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-            "name": "Johnathan Doe"
+            "img": "img/testimonials/rk.jpeg",
+            "text": "\"Awesome app for organizing your work. I use it to jot down to do things under the appropriate categories and that already makes them onto actionable items. Love how it helps me break down mountains of work into bite size chunks. And being free makes it a winner !!!.\"",
+            "name": "Rinku Kanti Chowdhury"
         },
         {
-            "img": "img/testimonials/03.jpg",
-            "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-            "name": "John Doe"
+            "img": "img/testimonials/nu.jpg",
+            "text": "\"It's very easy to be organized with this app! The app and web versions are clean and allow you to organize your tasks the way you prefer, creatings sections, projects, asign to different people and dates. I use this app for months and since then I could not find another app that gives me the same organization freedom.\"",
+            "name": "Mohammad Nizam Uddin"
+        },
+        {
+            "img": "img/testimonials/kh.jpg",
+            "text": "\"Definitely worth having, really useful, great for notifications and adding tasks, not as fully featured as the site but good and has got better.\"",
+            "name": "Md Kamal Jossain"
         },
         {
             "img": "img/testimonials/04.jpg",
-            "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-            "name": "Johnathan Doe"
-        },
-        {
-            "img": "img/testimonials/05.jpg",
-            "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+            "text": "\"Amazing, free app! Love the functionality and aesthetic! Was mentioned by Edmond Lau in the effective engineer and am glad I took a chance on it! This is hands out the best task managing app I have ever used. Only gripes are that sort by date gets unchecked frequently which gets annoying and that there is no dark mode yet. Other than that, great job team!.\"",
             "name": "John Doe"
         },
         {
-            "img": "img/testimonials/06.jpg",
-            "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+            "img": "img/testimonials/03.jpg",
+            "text": "\"People this is an incredible usefell app. In a business where communication is difficult in the sense of just too much information and tasks which are not listed will give you the oppurtunity too brain storm any time and it is an incredible way too inform your employer on your work load because it is now officially documented. You can attach info and also add sub tasks. Well done to the guys putting this incredible app together. Happy Fathersday to you all!!!.\"",
             "name": "Johnathan Doe"
         }
     ],
-    "Team": [{
+    "Team": [
+        {
             "img": "img/team/harald_korflesch.jpg",
             "name": "Prof. Dr. Harald von Korflesch",
-            "job": "Supervisor"
+            "job": "Business incubator and idea owner and co-founder"
+        },
+        {
+            "img": "img/team/VoidmodGmbH&Co.KG.jpg",
+            "name": "Voidmod GmbH & Co. KG",
+            "job": "Tech incubator and co-founder: Torben Bohr , Carolyn Sattler and Menglong Thay"
+        },
+        {
+            "img": "img/team/mareike-pfennig.jpg",
+            "name": "Mareike Pfennig",
+            "job": "CEO"
+        },
+        {
+            "img": "img/team/md-shohel-ahamad.jpg",
+            "name": "Md Shohel Ahamad",
+            "job": "CTO: Developer"
         }
     ],
     "Contact": {
@@ -106,17 +122,17 @@
         {
             "icon": "fa fa-check-square",
             "title": "ToDos",
-            "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+            "text": "The business diary functionalities will allow to capture personal ToDos."
         },
         {
             "icon": "fa fa-clipboard",
             "title": "Notes / issues",
-            "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+            "text": "This App will offer a simple-to-use and focused task-support service for notes"
         },
         {
             "icon": "fa fa-users",
             "title": "Participants / contacts",
-            "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+            "text": "The business diary will offer a simple-to-use and focused task-support and searing service among contacts."
         }
     ]
 }
