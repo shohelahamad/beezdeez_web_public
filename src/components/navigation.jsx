@@ -18,8 +18,8 @@ export class Navigation extends Component {
               <span className="icon-bar"></span>{" "}
               <span className="icon-bar"></span>{" "}
             </button>
-            <a className="navbar-brand page-scroll" href="#page-top" style={{padding: 0}}>
-            <img src="Beezdeezlogo.png" alt="Girl in a jacket" style={{height: 45}}/>
+            <a className="navbar-brand page-scroll" href="#page-top" style={{ padding: 0 }}>
+              <img src="Beezdeezlogo.png" alt="Girl in a jacket" style={{ height: 45 }} />
             </a>{" "}
           </div>
 
@@ -40,7 +40,7 @@ export class Navigation extends Component {
               </li>
               <li>
                 <a href="#services" className="page-scroll">
-                  Services
+                  Download
                 </a>
               </li>
               <li>
@@ -50,7 +50,7 @@ export class Navigation extends Component {
               </li>
               <li>
                 <a href="#testimonials" className="page-scroll">
-                  Testimonials
+                  Reviews
                 </a>
               </li>
               <li>

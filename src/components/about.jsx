@@ -11,7 +11,7 @@ export class about extends Component {
               <div className="about-text">
                 <h2>About Us</h2>
                 <p>{this.props.data ? this.props.data.paragraph : 'loading...'}</p>
-                <h3>Why Choose Us?</h3>
+                <h3>Why Choose our App?</h3>
                 <div className="list-style">
                   <div className="col-lg-6 col-sm-6 col-xs-12">
                     <ul>
