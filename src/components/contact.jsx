@@ -93,18 +93,18 @@ export class Contact extends Component {
                   <ul>
                     <li>
                       <a
-                        href={this.props.data ? this.props.data.facebook : "/"}
+                        href={this.props.data ? this.props.data.facebook : "https://www.uni-koblenz-landau.de/de/koblenz/fb4/ifm"}
                       >
                         <i className="fa fa-facebook"></i>
                       </a>
                     </li>
                     <li>
-                      <a href={this.props.data ? this.props.data.twitter : "/"}>
+                      <a href={this.props.data ? this.props.data.twitter : "https://www.uni-koblenz-landau.de/de/koblenz/fb4/ifm"}>
                         <i className="fa fa-twitter"></i>
                       </a>
                     </li>
                     <li>
-                      <a href={this.props.data ? this.props.data.youtube : "/"}>
+                      <a href={this.props.data ? this.props.data.youtube : "https://www.uni-koblenz-landau.de/de/koblenz/fb4/ifm"}>
                         <i className="fa fa-youtube"></i>
                       </a>
                     </li>
